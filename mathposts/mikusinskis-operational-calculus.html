@@ -28,7 +28,7 @@
       </font>
       <br>
       <font face="Verdana, Arial, Helvetica" size="2">
-        <a href="/">Home</a> | <a href="/blog/">Blog</a>
+        <a href="/">Home</a> 
       </font>
 
       <hr>
@@ -42,14 +42,28 @@
           <li>…</li>
         </ul>
 
-        <p><b>Example math</b> (replace with your real content):</p>
-        <p>Inline: $f(t) = e^{at}$</p>
-        <p>Display:</p>
-        $$
-        \int_0^\infty e^{-st} f(t)\,dt
-        $$
 
-        <!-- Paste your notes above this line -->
+	<p><b>1.1 Constructing the Rationals.</b> For sake of motivation we recall a construction of the rationals $\mathbb{Q}$ from the integers $\mathbb{Z}$.
+	Thus let $Q=\{(m,n):m,n\in\mathbb{Z},n\neq0\}\subset\mathbb{Z}\times\mathbb{Z}$ be the set of integer tuples $(m,n)$ whose second member is nonzero.
+	On $Q$ define the equivalence relation: for $(m,n),(a,b)\in Q$ write $(m,n)\sim(a,b)$ iff $mb=na$.
+	Formally we are stipulating $(m,n)\sim(a,b)$ iff $\frac{m}{n}=\frac{a}{b}$.
+	At last define $\mathbb{Q}=Q/\sim$ as the collection of $\sim$-equivalence classes.
+	Letting $[(a,b)]\in\mathbb{Q}$ denote the equivalence class corresponding to $(a,b)\in Q$ we resort to the standard notation: for any representative $(m,n)\in[(a,b)]$ write $\frac{m}{n}$ for $[(a,b)]\in\mathbb{Q}$.
+	One defines addition and multiplication on $\mathbb{Q}$ as usual:
+	$$\frac{m}{n}+\frac{p}{q}=[(m,n)]+[(p,q)]=[(mq+np,nq)]=\frac{mq+np}{nq}$$
+	$$\frac{m}{n}\cdot\frac{p}{q}=[(m,n)]\cdot[(p,q)]=[(mp,nq)]=\frac{mp}{nq}.$$
+	Having built $\mathbb{Q}$ out of "fractions" of members of $\mathbb{Z}$ one often calls $\mathbb{Q}$ the field of fractions of $\mathbb{Z}$.
+
+	<p><b>1.2 Remark.</b>  Before continuing let us point out a curious feature when constructing the field of fractions of the even integers $2\mathbb{Z}$.
+	Let $\tilde{\mathbb{Q}}=2\mathbb{Z}/\sim$ denote the field of fractions of $2\mathbb{Z}$.
+	While $1\notin2\mathbb{Z}$ observe that for any nonzero $m\in\mathbb{Z}$ the element $1:=\frac{2m}{2m}\in\tilde{\mathbb{Q}}$ defines a multiplicative identity on $\tilde{\mathbb{Q}}$:
+	$$1\cdot\frac{2p}{2q}=\frac{2m}{2m}\cdot\frac{2p}{2q}=\frac{4mp}{4mq}=\frac{2p}{2q}$$
+	for all $m,p,q\in\mathbb{Z}$ with nonzero $m$ and $q$.
+	Thus even though $\mathbb{Z}$ does not have a multiplicative identity its field of fractions does.
+	</p>
+
+
+
       </font>
 
       <hr>
