@@ -35,6 +35,7 @@
 
       <font face="Verdana, Arial, Helvetica" size="2">
         <!-- Paste your notes below this line -->
+	<p><b>THIS SITE IS UNDER CONSTRUCTION</b></p>
 
         <p><b>Outline</b></p>
         <ul>
@@ -61,6 +62,44 @@
 	for all $m,p,q\in\mathbb{Z}$ with nonzero $m$ and $q$.
 	Thus even though $\mathbb{Z}$ does not have a multiplicative identity its field of fractions does.
 	</p>
+
+	<p><b>2.1 Preliminary Notation and Constructions</b> Let $\mathcal{C}=\{f:[0,\infty)\to\mathbb{R}:f\text{ continuous}\}$ denote the space of continuous real-valued functions defined on the nonnegative reals.
+	We specify two items of notation.
+	First given $t\in[0,\infty)$ then $f(t)$ denotes the <i>numerical</i> value $f(t)$ (i.e., the image of $t$ under $f$.)
+	Second given $f:[0,\infty)\to\mathbb{R}$ we write $f$ <i>or</i> $\{f(t)\}$ for function $f:[0,\infty)\to\mathbb{R}$.
+	We define addition on $\mathcal{C}$ via pointwise addition:
+	$$f+g:=\{f(t)+g(t)\}.$$
+	We define multiplication via convolution:
+	$$f*g:=\{\int_0^tf(t-s)g(s)ds\}.$$
+	We emphasize: while addition on $\mathcal{C}$ is the usual pointwise functional addition the multiplication is not the usual pointwise functional multiplication.
+	Observe that $*$ is both commutative ($f*g=g*f$ for $f,g\in\mathcal{C}$) and association ($f*(g*h)=(f*g)*h$ for $f,g,h\in\mathcal{C}$).
+	One also verifies that $(\mathcal{C},*)$ has no zero divisors.
+	However there holds the following curiosity: $(\mathcal{C},*)$ does not admit a multiplicative identity.
+	In fact the constant function $\{1\}$ induces the integral operator $l:\mathcal{C}\to\mathcal{C}$ defined by
+	$$l:\{f(t)\}\mapsto\{1\}*\{f(t)\}=\{\int_0^tf(s)ds\}$$
+	which does not map $\{f(t)\}$ to $\{f(t)\}$ in general.
+	<br>
+	<br>
+	We pose the following interesting question: Can we invert the $*$ in any meaningful way?
+	If so what happens when we invert $l$?
+	In fact if $\{2\}$ denotes the constant function $t\mapsto2$ then $\{t\}*\{2\}=\{t^2\}$ and so $\{2\}$ can be thought of as the "convolution quotient" $\frac{\{t^2\}}{\{t\}}$.
+	</p>
+	<p><b>2.2 The Mikusiński Field of Fractions.</b> In order to rigorously define "convolution quotients" we construct a field of fractions for $(\mathcal{C},+,*)$.
+	Motivated by 1.1 let $\mathcal{C}_{M}=\{(f,g):f,g\in\mathcal{C},g\neq\{0\}\}$ noting that $\{0\}$ denotes the constant function with value zero.
+	Just as in 1.1 we constructed $\mathbb{Q}$ from $\mathbb{Z}$ by introducing a suitable space $Q$ and equivalece relation $\sim$ we construct a field of fractions over $\mathcal{C}$ by identifying an equivalence relation on $C_M$: given $(f,g),(u,v)\in C_M$ write $(f,g)\sim_M(u,v)$ iff $f*v=g*u$.
+	Then the Mikusiński's filed of fractions $\mathcal{C}_M$ is defined as the set of $\sim_M$ equivalence classes: $\mathcal{C}_M:=C_M/\sim_M$.
+	Given any representative $(f,g)\in[(u,v)]\in\mathcal{C}_M$ we opt to write $\frac{f}{g}$ for the $\sim_M$-equivalence class $[(u,v)]$; however we must emphasize that $\frac{f}{g}\neq\{\frac{f(t)}{g(t}\}$ in general.
+	In fact there holds $$\{t^2\}\{t\}=\{2\}\neq\{t^2/t\}"="\{t\}$$ where the use of $"="$ is to emphasize that $\{t^2/t\}$ needs a suitable interpretation at $t=0$ anyways.
+	We call expression $\frac{f}{g}\in\mathcal{C}_M$ as <i>convolution quotients</i>.
+
+	<p><b>2.3 Remark.</b> Just as $\mathbb{Z}$ naturally embeds into $\mathbb{Q}$ it holds that $\mathcal{C}$ naturally embeds into $\mathcal{C}_M$: any $f\in\mathcal{C}$ is identifiable with any convolution quotient of the form $\frac{f*g}{g}$ for any nonzero $g\in\mathcal{C}$.
+
+	</p>
+
+
+	</p>
+
+
 
 
 
