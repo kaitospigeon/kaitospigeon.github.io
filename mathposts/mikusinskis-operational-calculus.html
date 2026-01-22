@@ -9,7 +9,11 @@
     window.MathJax = {
       tex: {
         inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+	      macros: {
+		      M: '\\mathbb{M}',
+		      R: '\\mathbb{R}'
+	      }
       },
       svg: { fontCache: 'global' }
     };
@@ -43,6 +47,9 @@
           <li>…</li>
         </ul>
 
+	<p><b>0.1 Introduction</b>
+	...
+	</p>
 
 	<p><b>1.1 Constructing the Rationals.</b> For sake of motivation we recall a construction of the rationals $\mathbb{Q}$ from the integers $\mathbb{Z}$.
 	Thus let $Q=\{(m,n):m,n\in\mathbb{Z},n\neq0\}\subset\mathbb{Z}\times\mathbb{Z}$ be the set of integer tuples $(m,n)$ whose second member is nonzero.
@@ -67,14 +74,17 @@
 	We specify two items of notation.
 	First given $t\in[0,\infty)$ then $f(t)$ denotes the <i>numerical</i> value $f(t)$ (i.e., the image of $t$ under $f$.)
 	Second given $f:[0,\infty)\to\mathbb{R}$ we write $f$ <i>or</i> $\{f(t)\}$ for function $f:[0,\infty)\to\mathbb{R}$.
+	Thus a function may be specified in terms of expressions; e.g., $\{t+t^2\}$ means the function $t\mapsto t+t^2$.
 	We define addition on $\mathcal{C}$ via pointwise addition:
 	$$f+g:=\{f(t)+g(t)\}.$$
 	We define multiplication via convolution:
 	$$f*g:=\{\int_0^tf(t-s)g(s)ds\}.$$
-	We emphasize: while addition on $\mathcal{C}$ is the usual pointwise functional addition the multiplication is not the usual pointwise functional multiplication.
+	Given each $f\in\mathcal{C}$ induces an operator $\mathcal{C}\to\mathcal{C}$ given by $g\mapsto f*g$ for $g\in\mathcal{C}$ we call members of $\mathcal{C}$ <i>operators</i>.
+	While addition on $\mathcal{C}$ is the usual pointwise functional addition the multiplication is not the usual pointwise functional multiplication; viz., $f*g\neq\{f(t)g(t)\}$ in general.
 	Observe that $*$ is both commutative ($f*g=g*f$ for $f,g\in\mathcal{C}$) and association ($f*(g*h)=(f*g)*h$ for $f,g,h\in\mathcal{C}$).
 	One also verifies that $(\mathcal{C},*)$ has no zero divisors.
 	However there holds the following curiosity: $(\mathcal{C},*)$ does not admit a multiplicative identity.
+	Thus $(\mathcal{C},*)$ is more like $2\mathbb{Z}$ than $\mathbb{Z}$.
 	In fact the constant function $\{1\}$ induces the integral operator $l:\mathcal{C}\to\mathcal{C}$ defined by
 	$$l:\{f(t)\}\mapsto\{1\}*\{f(t)\}=\{\int_0^tf(s)ds\}$$
 	which does not map $\{f(t)\}$ to $\{f(t)\}$ in general.
@@ -83,23 +93,40 @@
 	We pose the following interesting question: Can we invert the $*$ in any meaningful way?
 	If so what happens when we invert $l$?
 	In fact if $\{2\}$ denotes the constant function $t\mapsto2$ then $\{t\}*\{2\}=\{t^2\}$ and so $\{2\}$ can be thought of as the "convolution quotient" $\frac{\{t^2\}}{\{t\}}$.
+	We verify this is the case.
 	</p>
+
 	<p><b>2.2 The Mikusiński Field of Fractions.</b> In order to rigorously define "convolution quotients" we construct a field of fractions for $(\mathcal{C},+,*)$.
-	Motivated by 1.1 let $\mathcal{C}_{M}=\{(f,g):f,g\in\mathcal{C},g\neq\{0\}\}$ noting that $\{0\}$ denotes the constant function with value zero.
-	Just as in 1.1 we constructed $\mathbb{Q}$ from $\mathbb{Z}$ by introducing a suitable space $Q$ and equivalece relation $\sim$ we construct a field of fractions over $\mathcal{C}$ by identifying an equivalence relation on $C_M$: given $(f,g),(u,v)\in C_M$ write $(f,g)\sim_M(u,v)$ iff $f*v=g*u$.
-	Then the Mikusiński's filed of fractions $\mathcal{C}_M$ is defined as the set of $\sim_M$ equivalence classes: $\mathcal{C}_M:=C_M/\sim_M$.
-	Given any representative $(f,g)\in[(u,v)]\in\mathcal{C}_M$ we opt to write $\frac{f}{g}$ for the $\sim_M$-equivalence class $[(u,v)]$; however we must emphasize that $\frac{f}{g}\neq\{\frac{f(t)}{g(t}\}$ in general.
-	In fact there holds $$\{t^2\}\{t\}=\{2\}\neq\{t^2/t\}"="\{t\}$$ where the use of $"="$ is to emphasize that $\{t^2/t\}$ needs a suitable interpretation at $t=0$ anyways.
-	We call expression $\frac{f}{g}\in\mathcal{C}_M$ as <i>convolution quotients</i>.
+	Motivated by 1.1 let $M=\{(f,g):f,g\in\mathcal{C},g\neq\{0\}\}$ noting that $\{0\}$ denotes the constant function with value zero.
+	Just as in 1.1 we constructed $\mathbb{Q}$ from $\mathbb{Z}$ by introducing a suitable space $Q$ and equivalece relation $\sim$ we construct a field of fractions over $\mathcal{C}$ by identifying an equivalence relation on $M$: given $(f,g),(u,v)\in M$ write $(f,g)\sim_M(u,v)$ iff $f*v=g*u$.
+	Then Mikusiński's field of fractions $\mathbb{M}$ is defined as the set of $\sim_M$-equivalence classes: $\mathbb{M}:=M/\sim_M$.
+	We also call members of $\mathbb{M}$ <i>operators</i>.
+	Given any representative $(f,g)\in[(u,v)]\in\mathbb{M}$ we opt to write $\frac{f}{g}$ for the $\sim_M$-equivalence class $[(u,v)]$ and call $\frac{f}{g}$ a convolution quotient.
+	Observe that $\mathbb{M}$ naturally inherits addition and multiplication: given $\frac{f}{g},\frac{h}{k}\in\mathbb{M}$ define
+	$$\frac{f}{g}+\frac{h}{k}:=[(f*k+g*h,g*k)]$$
+	$$\frac{f}{g}\frac{h}{k}:=[(f*h,g*k)].$$
 
-	<p><b>2.3 Remark.</b> Just as $\mathbb{Z}$ naturally embeds into $\mathbb{Q}$ it holds that $\mathcal{C}$ naturally embeds into $\mathcal{C}_M$: any $f\in\mathcal{C}$ is identifiable with any convolution quotient of the form $\frac{f*g}{g}$ for any nonzero $g\in\mathcal{C}$.
+
+
+	<p><b>2.3 Remark.</b> Just as $\mathbb{Z}$ naturally embeds into $\mathbb{Q}$ it holds that $\mathcal{C}$ naturally embeds into $\mathbb{M}$: any $f\in\mathcal{C}$ is identifiable with any convolution quotient of the form $\frac{f*g}{g}$ for any nonzero $g\in\mathcal{C}$.
+	As such we abuse notation and may write $f$ to mean either $\{f(t)\}\in\mathcal{C}$ or its image in $\mathbb{M}$ under this identification.
 	</p>
 
-	<p><b>Multiplication by Constants.</b>
-	Given $c\in\mathbb{R}$ observe that if $\{c\}$ denotes the constant function $t\mapsto c$ then $\{c\}*f\neq\{cf(t)\}$ in general for $f\in\mathcal{C}$.
-	On the hand we may define the natural action $\mathbb{R}\curvearrowright\mathcal{C}$ given by $cf:=\{cf(t)\}$ for $c\in\mathbb{R}$ and $f\in\mathcal{C}$.
-	From this we may write $f+c$ with the understanding that $f+c$ means the operator mapping $g\in\mathcal{C}_M$ to $f*g+cg$.
-	In particular $\mathcal{C}$ and $\mathcal{C}_M$ are $\mathbb{R}$-vector spaces.
+	<p><b>2.4 Remark.</b> Given $f,g\in\mathcal{C}$ with $g\neq\{0\}$ then in general $\frac{\{f(t)\}}{\{g(t)\}}\neq\{\frac{f(t)}{g(t)}\}$.
+	To see this we show that $\{2\}=\{t^2\}/\{t\}$.
+	This may verified by showing $\{2\}*\{1\}*\{t\}$ equals $\{1\}*\{t^2\}$ (recall $\{2\}=\frac{\{2\}*\{1\}}{\{1\}}$).
+	We find
+	$$\{1\}*\{t^2\}=\{\int_0^t s^2 ds\} = \{\frac{t^3}{3}\}$$
+	$$\{1\}*\{t\}=\{\int_0^t s ds\} = \{\frac{t^2}{2}\}$$
+	$$\{2\}*\{\frac{t^2}{2}\}=\{\int_0^t s^2 ds\} = \{\frac{t^3}{3}\}$$
+	as desired.
+	</p>
+
+	<p><b>2.4 Multiplication by Scalars.</b> Given $c\in\mathbb{R}$ let $\{c\}$ denote the constant function defined by $t\mapsto c$.
+	Given $f\in\M$ and $c\in\R$ observe that in general there holds $\{c\}*\{f(t)\}\neq\{cf(t)\}$.
+	On the other hand we may <i>define</i> $c\{f(t)\}$ as $\{cf(t)\}$.
+
+
 	</p>
 
 
