@@ -12,7 +12,8 @@
         displayMath: [['$$', '$$'], ['\\[', '\\]']],
 	      macros: {
 		      M: '\\mathbb{M}',
-		      R: '\\mathbb{R}'
+		      R: '\\mathbb{R}',
+		      d: '\\delta'
 	      }
       },
       svg: { fontCache: 'global' }
@@ -85,7 +86,7 @@
 	One also verifies that $(\mathcal{C},*)$ has no zero divisors.
 	However there holds the following curiosity: $(\mathcal{C},*)$ does not admit a multiplicative identity.
 	Thus $(\mathcal{C},*)$ is more like $2\mathbb{Z}$ than $\mathbb{Z}$.
-	In fact the constant function $\{1\}$ induces the integral operator $l:\mathcal{C}\to\mathcal{C}$ defined by
+	In fact the constant function $\{1\}$ induces the integration operator $l:\mathcal{C}\to\mathcal{C}$ defined by
 	$$l:\{f(t)\}\mapsto\{1\}*\{f(t)\}=\{\int_0^tf(s)ds\}$$
 	which does not map $\{f(t)\}$ to $\{f(t)\}$ in general.
 	<br>
@@ -116,17 +117,45 @@
 	To see this we show that $\{2\}=\{t^2\}/\{t\}$.
 	This may verified by showing $\{2\}*\{1\}*\{t\}$ equals $\{1\}*\{t^2\}$ (recall $\{2\}=\frac{\{2\}*\{1\}}{\{1\}}$).
 	We find
-	$$\{1\}*\{t^2\}=\{\int_0^t s^2 ds\} = \{\frac{t^3}{3}\}$$
-	$$\{1\}*\{t\}=\{\int_0^t s ds\} = \{\frac{t^2}{2}\}$$
-	$$\{2\}*\{\frac{t^2}{2}\}=\{\int_0^t s^2 ds\} = \{\frac{t^3}{3}\}$$
+	$$\{1\}*\{t^2\}=\{\int_0^ts^2 ds\} = \{\frac{t^3}{3}\}$$
+	$$\{1\}*\{t\}=\{\int_0^ts ds\} = \{\frac{t^2}{2}\}$$
+	$$\{2\}*\{\frac{t^2}{2}\}=\{\int_0^ts^2 ds\} = \{\frac{t^3}{3}\}$$
 	as desired.
 	</p>
 
 	<p><b>2.4 Multiplication by Scalars.</b> Given $c\in\mathbb{R}$ let $\{c\}$ denote the constant function defined by $t\mapsto c$.
 	Given $f\in\M$ and $c\in\R$ observe that in general there holds $\{c\}*\{f(t)\}\neq\{cf(t)\}$.
 	On the other hand we may <i>define</i> $c\{f(t)\}$ as $\{cf(t)\}$.
+	</p>
 
+	<p><b>2.5 The Multiplicative Identity</b>
+	Recall that much like $2\mathbb{Z}$ the space $(\mathcal{C},+,*)$ does not admit a multiplicative identity.
+	On the other hand $\M$ does: for any nonzero $k\in\mathcal{C}$ there holds $\frac{k}{k}*\frac{f}{g}=\frac{f}{g}$ for all $\frac{f}{g}\in\M$.
+	As such define $\delta:=\frac{k}{k}$ for any nonzero $k\in\mathcal{C}$.
+	Note that $\delta$ does not depend on the choice of nonzero $k$.
+	Purely formally ($\delta(t-s)$ does not actually mean anything) there holds
+	$$\d*\{f(t)\}=\{\int_0^t\d(t-s)g(s)ds\}=\{f(t)\}$$
+	and so we realize $\d$ is just the Dirac delta function.
 
+	Given $\phi\in\M$ we call $\psi\in\M$ the convolution inverse of $\phi$ provided $\phi*\psi=\d$.
+	If $f\in\mathcal{C}$ then note the convolution inverse of $f$ is $\frac{1}{f}\in\mathcal{C}$.
+	</p>
+
+	<p><b>2.6 The Differentiation Operator</b>
+	Recall the integration operator $l:\mathcal{C}\to\mathcal{C}$ is given by the constant function $\{1\}$: $l[f]:=\{1\}*\{f(t)\}$.
+	One computes for example $l[t]=\{\int_0^tsds\}=\{\frac{t^2}{2}\}$.
+	A natural curiosity is: What is the convolution inverse $\frac{1}{l}$ of $l$?
+	Thus we wish to find $s\in\M$ such that $l*s=\d$.
+	Given $f\in\mathcal{C}$ there must hold $s*l*f=\d*f=f$.
+	Letting $F\in\mathcal{C}$ be such that $\int_0^tf(s)ds=F(t)-F(0)$ we thus have
+	$$s*[\{\int_0^tf(s)ds\}]=s*\{F(t)-F(0)\}=\{f(t)\}.$$
+	Evidently if we define $s$ by $s*F=F'+F(0)\d$ then $s*\{F(t)-F(0)\}=f$.
+	Observe this definition requires $F'$ to exist and therefore we may only conclude how $s$ ought to act those members of $\mathcal{C}$ whose derivatives also belong to $\mathcal{C}$.
+
+	In conclusion if $f,f'\in\mathcal{C}$ then $s*f=f'+f(0)\d$.
+	How $s$ acts on those $f\in\mathcal{C}$ for which $f'\notin\mathcal{C}$ will not be our concern.
+	Thus the convlution inverse of the integration operator is the differentiation operator (one which tracks the initial value of its input).
+	
 	</p>
 
 
@@ -142,7 +171,7 @@
 
       <center>
         <font face="Verdana, Arial, Helvetica" size="1">
-          Last updated: <tt>2026-01-21</tt>
+          Last updated: <tt>2026-01-22</tt>
         </font>
       </center>
     </td></tr>
