@@ -12,9 +12,14 @@
         displayMath: [['$$', '$$'], ['\\[', '\\]']],
 	      macros: {
 		      M: '\\mathbb{M}',
+		      B: '\\mathbb{B}',
 		      R: '\\mathbb{R}',
 		      d: '\\delta',
-		      C: '\\mathbb{C}'
+		      C: '\\mathbb{C}',
+		      N: '\\mathbb{N}',
+		      Q: '\\mathbb{Q}',
+		      Im: '\\operatorname{Im}',
+		      Re: '\\operatorname{Re}'
 	      }
       },
       svg: { fontCache: 'global' }
@@ -47,6 +52,7 @@
         <ul>
 		<li>Introduction</li>
 		<li>Fourier Transform on $\R^{2}$</li>
+		<li>The Normed Division Algebras</li>
 		<li>The Hyperbolic Spaces</li>
 		<li>Fourier Transform on the Hyperbolic Spaces</li>
         </ul>
@@ -105,13 +111,73 @@
 	</p>
 
 
+
+	<p><b>The Normed Division Algebras</b></p>
+	<p>
+	Recall that a normed division algebra over $\R$ is a unital $\R$-algebra with no zero divisors and with a norm respecting products.
+	A result of Hurwitz is that up to isomorphism there are exactly four finite dimensional normed division algebras over $\R$: the reals $\R$, the complexes $\C$, the quaternions $\Q$ and the octonions $\C a$.
+	</p>
+
+	<p>
+	Recall $\C$ has an imaginary element $i$ satisfying $i^{2}=-1$.
+	The quaternions $\Q$ have four imaginary units: $i$, $j$ and $k$ satisfying
+	$$
+	i^{2}=j^{2}=k^{2}=ijk=-1.
+	$$
+	The octonions $\C a$ has seven imaginary units.
+	We recall that via the Cayley-Dickson construction one may construct $\C$, $\Q$ and $\C a$ from $\R$, $\C$ and $\Q$ respectively by suitably "doubling."
+	Recall also that under this construction $\C$, $\Q$ and $\C a$ respectively lose ordering, commutativity and associativity.
+	</p>
+
+	<p>
+	Let $k\in\{\R,\C,\Q\}$; the case $k=\C a$ is exceptional and not handled here.
+	Given $n\in\N_{>0}$ let $k^{n}$ denote the $n$-fold Cartesian product of $n$.
+	Given $z\in k^{n}$ we define $\Re z$, $\Im z$ and $\overline{z}$ in the obvious ways; e.g., $\Im(1-2i+k)=-2i+k$.
+	Given $z,w\in k^{n}$ we define the hyperKahler product
+	$$
+	(z,w)_{k}=z_{1}\overline{w}_{1}+\cdots+z_{n}\overline{w}_{n}
+	$$
+	and norm
+	$$
+	|z|=\sqrt{(z,z)_{k}}.
+	$$
+	Due to the nonassociativity of $\C a $ the definition of $|z|$ for $z\in\C a$ requires nontrivial adaptation.
+
+	</p>
+
+	<p><b>The Hyperbolic Spaces</b></p>
+	<p>
+	Given $k\in\{\R,\C,\Q\}$ define
+	$$
+	\B_{k}^{n}=\{z\in k:(z,z)_{k}<1\}.%>
+	$$
+	The case $k=\C a$ requires $n=1$ and a nontrivial adaptation due to its nonassociativity.
+	</p>
+
+	<p>
+	The $k$-hyperbolic space is $\B_{k}$ equipped with the Beltrami-Klein metric:
+	$$
+	ds^{2}=(1-(z,z)_{k})^{-1}((dz,dz)_{k}+(1-(z,z)_{k})^{-1}|(dz,z)_{k}|^2).
+	$$
+	Here 
+	$$
+	\begin{align}
+	(dz,dz)&=\sum dz_{\ell}\wedge d\overline{z}_{\ell}\\
+	(dz,z)&=\sum dz_{\ell}\overline{w}_{\ell}\\
+	\end{align}
+	$$
+	In case $k=\R$ this is just the usual Beltrami-Klein metric on hyperbolic space.
+	(Note there is analogue of the Poincar\'e metric for $k\in\{\C,\Q\}$.)
+	</p>
+
+
       </font>
 
       <hr>
 
       <center>
         <font face="Verdana, Arial, Helvetica" size="1">
-          Last updated: <tt>2026-02-23</tt>
+          Last updated: <tt>2026-03-24</tt>
         </font>
       </center>
     </td></tr>
